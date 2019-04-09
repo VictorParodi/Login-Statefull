@@ -33,6 +33,11 @@ class LoginScreenState extends State<LoginScreen> {
         labelText: 'Email Address',
         hintText: 'youremail@email.com'
       ),
+      validator: (String value) {
+        if (!value.contains('@')) {
+          return 'A valid email please';
+        }
+      }
     );
   }
 
@@ -43,6 +48,11 @@ class LoginScreenState extends State<LoginScreen> {
         labelText: 'Password',
         hintText: 'Password'
       ),
+      validator: (String value) {
+        if (value.length < 4) {
+          return 'A value password please';
+        }
+      }
     );
   }
 
@@ -52,7 +62,7 @@ class LoginScreenState extends State<LoginScreen> {
       color: Colors.blue,
       child: Text('Submit'),
       onPressed: () {
-        formKey.currentState.reset();
+        formKey.currentState.validate();
       },
     );
   }
